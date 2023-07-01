@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Registerform.css";
+import { useNavigate } from "react-router-dom";
 const Signupform = () => {
 	const [userDetails, setUserDetails] = useState({
 		name: "",
@@ -8,7 +9,7 @@ const Signupform = () => {
 		phone: "",
 		check: false,
 	});
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 	const [error, setError] = useState({});
 	const [submission, setSubmission] = useState(false);
 	console.log(userDetails);
@@ -27,7 +28,7 @@ const Signupform = () => {
 		if (name && username && email && phone && check) {
 			window.localStorage.setItem("userData", JSON.stringify(userDetails));
 			setSubmission(true);
-			// navigate("/genre");
+			navigate("/genre");
 		} else {
 			setError(validation(userDetails));
 		}
